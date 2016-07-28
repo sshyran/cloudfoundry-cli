@@ -10,7 +10,7 @@ resources:
   source:
     uri: git@github.com:cloudfoundry/cli
     private_key: {{cf-cli-eng-github-private-key}}
-    branch: master
+    branch: dummy-delete-me
     ignore_paths:
     - ci
 
@@ -19,7 +19,7 @@ resources:
   source:
     uri: git@github.com:cloudfoundry/cli
     private_key: {{cf-cli-eng-github-private-key}}
-    branch: master
+    branch: dummy-delete-me
     paths:
     - ci
 
