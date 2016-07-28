@@ -64,4 +64,4 @@ jobs:
           SIGNTOOL_CERT_PASSWORD: {{signtool-cert-password}}
   - put: cf-cli-installer-win64
     params:
-      file: winstallers/cf-cli-installer_winx64.zip
+      file: cf-cli-installer-win64/cf-cli-installer_winx64.zip
