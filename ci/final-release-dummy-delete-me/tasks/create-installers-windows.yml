@@ -7,6 +7,7 @@ params:
 
 inputs:
 - name: 64bit-windows-binary
+- name: cli-ci
 
 outputs:
 - name: cf-cli-installer-win64

@@ -52,6 +52,7 @@ jobs:
   plan:
   - aggregate:
     - get: 64bit-windows-binary
+    - get: cli
     - get: cli-ci
     - get: cli-private
   - aggregate:
