@@ -14,9 +14,15 @@ sed -i -e "s/CF_SOURCE/%ESCAPED_ROOT_DIR%\\cf.exe/" %ROOT_DIR%\cli-ci\installers
 sed -i -e "s/SIGNTOOL_CERT_PASSWORD/%SIGNTOOL_CERT_PASSWORD%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 sed -i -e "s/SIGNTOOL_CERT_PATH/%SIGNTOOL_CERT_PATH%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
-unzip %ROOT_DIR%\64bit-windows-binary\cf-cli_6.19.0_winx64.zip
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+function Unzip
+{
+    param([string]$zipfile, [string]$outpath)
 
-MOVE %ROOT_DIR%\64bit-windows-binary\cf.exe %ROOT_DIR%\
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($zipfile, $outpath)
+}
+
+Unzip %ROOT_DIR%\64bit-windows-binary\cf-cli_6.19.0_winx64.zip %ROOT_DIR%\
 
 ISCC %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
