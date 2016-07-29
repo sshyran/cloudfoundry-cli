@@ -20,6 +20,6 @@ popd
 
 ISCC %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
-MOVE %ROOT_DIR%\cli-ci\installers\windows\Output\mysetup.exe %ROOT_DIR\cli-ci\cf_installer.exe
+MOVE %ROOT_DIR%\cli-ci\installers\windows\Output\mysetup.exe %ROOT_DIR%\cli-ci\cf_installer.exe
 
-zip %ROOT_DIR%\winstallers\cf-cli-installer_winx64.zip %ROOT_DIR\cli-ci\cf_installer.exe
+zip %ROOT_DIR%\winstallers\cf-cli-installer_winx64.zip %ROOT_DIR%\cli-ci\cf_installer.exe
