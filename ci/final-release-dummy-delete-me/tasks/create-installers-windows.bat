@@ -16,7 +16,7 @@ sed -i -e "s/SIGNTOOL_CERT_PATH/%SIGNTOOL_CERT_PATH%/" %ROOT_DIR%\cli-ci\install
 
 unzip %ROOT_DIR%\64bit-windows-binary\cf-cli_6.19.0_winx64.zip
 
-MOVE %ROOT_DIR%\64bit-windows-binary\cf.exe %ROOT_DIR%\cf.exe
+MOVE %ROOT_DIR%\64bit-windows-binary\cf.exe %ROOT_DIR%\
 
 ISCC %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
