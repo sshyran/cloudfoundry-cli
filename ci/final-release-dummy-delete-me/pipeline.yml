@@ -37,7 +37,7 @@ resources:
     bucket: {{staging-bucket-name}}
     access_key_id: {{staging-bucket-access-key-id}}
     secret_access_key: {{staging-bucket-secret-access-key}}
-    versioned_file: cf-cli-installer_6.19.0_winx64.zip
+    versioned_file: cf-cli-installer_6.20.0_winx64.zip
 
 - name: cli-private
   type: git

@@ -9,7 +9,7 @@ REM Name: "signtool", Command: "signtool.exe $p"
 REM This is to add "signtool.exe" to your path, so it does not need to be fully qualified in the configuration above
 SET PATH=C:\Program Files (x86)\Windows Kits\10\bin\x64;%PATH%
 
-sed -i -e "s/VERSION/6.19.0/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
+sed -i -e "s/VERSION/6.20.0/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 sed -i -e "s/CF_SOURCE/%ESCAPED_ROOT_DIR%\\cf.exe/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 sed -i -e "s/SIGNTOOL_CERT_PASSWORD/%SIGNTOOL_CERT_PASSWORD%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 sed -i -e "s/SIGNTOOL_CERT_PATH/%SIGNTOOL_CERT_PATH%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
