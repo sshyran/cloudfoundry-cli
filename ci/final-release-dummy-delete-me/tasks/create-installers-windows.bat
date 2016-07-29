@@ -14,6 +14,10 @@ sed -i -e "s/CF_SOURCE/%ESCAPED_ROOT_DIR%\\cf.exe/" %ROOT_DIR%\cli-ci\installers
 sed -i -e "s/SIGNTOOL_CERT_PASSWORD/%SIGNTOOL_CERT_PASSWORD%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 sed -i -e "s/SIGNTOOL_CERT_PATH/%SIGNTOOL_CERT_PATH%/" %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
+pushd %ROOT_DIR%\64bit-windows-binary
+	MOVE cf.exe ..\cf.exe
+popd
+
 ISCC %ROOT_DIR%\cli-ci\installers\windows\windows-installer-x64.iss
 
 MOVE %ROOT_DIR%\cli-ci\installers\windows\Output\mysetup.exe cf_installer.exe
