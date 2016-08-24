@@ -16,7 +16,7 @@ configure_pipeline() {
 
   printf "configuring the $name pipeline...\n"
 
-  fly -t ci set-pipeline \
+  fly -t cli set-pipeline \
     -p $name \
     -c $pipeline \
     -l <(lpass show "Concourse Credentials" --notes)

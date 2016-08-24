@@ -16,6 +16,16 @@ resources:
     ignore_paths:
     - ci
 
+- name: temp-cli
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry/cli
+    private_key: {{cf-cli-eng-github-private-key}}
+    branch: master
+    tag_filter: v6.21.1
+    ignore_paths:
+    - ci
+
 - name: final-cli
   type: git
   source:
@@ -38,6 +48,15 @@ resources:
     uri: git@github.com:cloudfoundry/cli
     private_key: {{cf-cli-eng-github-private-key}}
     branch: master
+    paths:
+    - ci
+
+- name: temp-cli-ci
+  type: git
+  source:
+    uri: git@github.com:cloudfoundry/cli
+    private_key: {{cf-cli-eng-github-private-key}}
+    branch: publish-debian
     paths:
     - ci
 
@@ -525,6 +544,23 @@ jobs:
       repository: update-brew-formula-output/homebrew-tap
   - task: publish-debian
     file: cli-ci/ci/cli/tasks/publish-debian.yml
+    params:
+      GPG_KEY: {{gpg_key}}
+      KEY_ID:  {{gpg_key_id}}
+      AWS_SECRET_ACCESS_KEY: {{debian_secret_access_key}}
+      AWS_ACCESS_KEY_ID: {{debian_access_key_id}}
+
+- name: temp-publish-debian
+  serial: true
+  plan:
+  - aggregate:
+    - get: final-cli
+      trigger: true
+    - get: temp-cli
+    - get: cli-private
+    - get: temp-cli-ci
+  - task: publish-debian
+    file: temp-cli-ci/ci/cli/tasks/publish-debian.yml
     params:
       GPG_KEY: {{gpg_key}}
       KEY_ID:  {{gpg_key_id}}
