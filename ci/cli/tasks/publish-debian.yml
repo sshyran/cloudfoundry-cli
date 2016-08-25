@@ -39,8 +39,8 @@ run:
 
     filename_regex="cf-cli(-installer)?([-_0-9a-z]+)?(\.[a-z]+)?"
     pushd installers
-      curl -L -o cf-cli-instaler_6.21.1_i686.deb 'https://cli.run.pivotal.io/stable?release=debian32&version=6.21.1&source=github-rel'
-      curl -L -o cf-cli-instaler_6.21.1_x86-64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.21.1&source=github-rel'
+      curl -L -o cf-cli-installer_6.21.1_i686.deb 'https://cli.run.pivotal.io/stable?release=debian32&version=6.21.1&source=github-rel'
+      curl -L -o cf-cli-installer_6.21.1_x86-64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.21.1&source=github-rel'
     popd
 
     cat >> $HOME/.gnupg/gpg.conf <<EOF

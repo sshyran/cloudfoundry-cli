@@ -56,7 +56,7 @@ resources:
   source:
     uri: git@github.com:cloudfoundry/cli
     private_key: {{cf-cli-eng-github-private-key}}
-    branch: publish-debian
+    branch: wip-publish-debian
     paths:
     - ci
 
