@@ -30,7 +30,7 @@ lpass sync
 
 pipelines_path=$(cd $(dirname $0)/.. && pwd)
 
-configure_pipeline ci \
+configure_pipeline cli \
   $pipelines_path/cli/pipeline.yml
 
 configure_pipeline infrastructure \

@@ -40,8 +40,8 @@ run:
     filename_regex="cf-cli(-installer)?([-_0-9a-z]+)?(\.[a-z]+)?"
     pushd installers
       VERSIONS="6.0.2 6.1.0 6.1.1 6.1.2 6.2.0 6.3.0 6.3.1 6.3.2 6.4.0 6.5.0 6.5.1 6.6.0 6.6.1 6.6.2 6.7.0 6.8.0 6.9.0 6.10.0 6.11.0 6.11.1 6.11.2 6.11.3 6.12.0 6.12.1 6.12.2 6.12.3 6.12.4 6.13.0 6.14.0 6.14.1 6.15.0 6.16.0 6.16.1 6.17.0 6.17.1 6.18.0 6.18.1 6.19.0 6.20.0 6.21.0"
-      echo $VERSIONS | xargs -n1 -P 10 -I{} curl -L -o cf-cli-installer_{}_i686.deb 'https://cli.run.pivotal.io/stable?release=debian32&version={}'
-      echo $VERSIONS | xargs -n1 -P 10 -I{} curl -L -o cf-cli-installer_{}_x86-64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version={}'
+      echo $VERSIONS | xargs -d" " -n1 -P 10 -I{} curl -L -o cf-cli-installer_{}_i686.deb 'https://cli.run.pivotal.io/stable?release=debian32&version={}'
+      echo $VERSIONS | xargs -d" " -n1 -P 10 -I{} curl -L -o cf-cli-installer_{}_x86-64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version={}'
     popd
 
     cat >> $HOME/.gnupg/gpg.conf <<EOF
