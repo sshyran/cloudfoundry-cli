@@ -16,7 +16,7 @@ configure_pipeline() {
 
   printf "configuring the $name pipeline...\n"
 
-  fly -t cli set-pipeline \
+  fly -t ci set-pipeline \
     -p $name \
     -c $pipeline \
     -l <(lpass show "Concourse Credentials" --notes)
@@ -30,7 +30,7 @@ lpass sync
 
 pipelines_path=$(cd $(dirname $0)/.. && pwd)
 
-configure_pipeline cli \
+configure_pipeline ci \
   $pipelines_path/cli/pipeline.yml
 
 configure_pipeline infrastructure \
