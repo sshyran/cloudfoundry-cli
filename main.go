@@ -66,14 +66,18 @@ func parse(args []string) {
 				parse([]string{"help"})
 			}
 		default:
-			fmt.Printf("unexpected flag error\ntype: %s\nmessage: %s\n", flagErr.Type, flagErr.Error())
+			fmt.Printf("Unexpected Flag Error\ntype: %s\nmessage: %s\n", flagErr.Type, flagErr.Error())
 		}
+	} else if _, ok := err.(commands.FailedError); ok {
+		fmt.Println("FAILED")
+		os.Exit(1)
 	} else {
-		fmt.Println("unexpected error:", err.Error())
+		fmt.Println("Unexpected Error:", err.Error())
 	}
 }
 
 func myCommandHandler(cmd flags.Commander, args []string) error {
+<<<<<<< Updated upstream
 	config, _ := config.LoadConfig()
 	//defer write config
 	var err error
@@ -84,6 +88,13 @@ func myCommandHandler(cmd flags.Commander, args []string) error {
 
 	if extendedCmd, ok := cmd.(commands.ExtendedCommander); ok {
 		err := extendedCmd.Setup(config, commandUI)
+=======
+	cfConfig, _ := config.LoadConfig()
+	defer config.WriteConfig(cfConfig)
+
+	if extendedCmd, ok := cmd.(commands.ExtendedCommander); ok {
+		err := extendedCmd.Setup(cfConfig)
+>>>>>>> Stashed changes
 		if err != nil {
 			return err
 		}
