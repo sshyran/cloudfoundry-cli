@@ -237,23 +237,49 @@
     "https_proxy=proxy.example.com:8080",
     "inline-relations-depth",
     "keepalive@cloudfoundry.org",
-    "multipart/form-data; boundary=%s"
+    "multipart/form-data; boundary=%s",
+    " api",
+    " App",
+    "window-change",
+    "web",
+    "v3apps",
+    "BUILT_AT_UNKNOWN_TIME",
+    "BUILT_FROM_SOURCE",
+    "CF_NAME",
+    "/v2/routes?",
+    ";provider:",
+    "?inline-relations-depth=1",
+
+    "\rDone uploading",
+    ". Process to uninstall ...",
+    "Error invoking plugin: ",
+    "An unexpected type of error"
   ],
   "excludedRegexps": [
     "^(?:\\s*{{.\\w+}}[^\\w{]*)+$",
     "^\\/?(?:[\\w%]+\\/)+[\\w%]+(?:\\?(?:[\\w-]+=[\\w,%]+&?)+)?$",
-    "^(?:\\w+-)*(?:role|users?|buildpack|space|auth-tokens?|services?|security-groups?|quotas?)(?:-\\w+)*$",
+
+
     "^(?:[\\W]*%(?:[#v]|[%EGUTXbcdefgopqstvx]))+[\\W]*$",
     "^\\w+Fields$",
+
     "^\\w{2}$",
     "^\\d+$",
     "^[\\W\\d]+$",
     "^\\s*-\\w\\s*$",
     "^\\w$",
+
     "^\\w{2}$",
     "^json",
     "^yaml",
     "^\\.\\w+$",
-    "^[\\Wsd]+$"
+    "^[\\Wsd]+$",
+    "%#?[sodvq]",
+    "^ (restage|target).*$",
+    "^(   )+CF_NAME [\\w-]+ .*$",
+    "^' must be an? (float64|integer)$",
+    "^--?",
+    "^related_commands",
+    "^url:"
   ]
 }

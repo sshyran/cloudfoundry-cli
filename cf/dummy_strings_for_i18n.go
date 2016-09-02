@@ -27,5 +27,4 @@ func _() {
 	T("USER ADMIN:")
 	T("ORGS:")
 	T("SECURITY GROUP:")
-	T("ORG ADMIN:")
 }
