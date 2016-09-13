@@ -80,7 +80,7 @@ func NewTestUI(out io.Writer, err io.Writer) UI {
 	return UI{
 		Out:          out,
 		Err:          err,
-		colorEnabled: config.ColorDisbled,
+		colorEnabled: config.ColorDisabled,
 		translate:    translationWrapper(i18n.IdentityTfunc()),
 	}
 }
@@ -188,7 +188,7 @@ func (ui UI) colorize(message string, textColor color.Attribute, bold bool) stri
 	switch ui.colorEnabled {
 	case config.ColorEnabled:
 		colorPrinter.EnableColor()
-	case config.ColorDisbled:
+	case config.ColorDisabled:
 		colorPrinter.DisableColor()
 	}
 

@@ -205,7 +205,7 @@ type PluginUsageDetails struct {
 type ColorSetting int
 
 const (
-	ColorDisbled ColorSetting = iota
+	ColorDisabled ColorSetting = iota
 	ColorEnabled
 	ColorAuto
 )
@@ -230,7 +230,7 @@ func (_ *Config) boolToColorSetting(val bool) ColorSetting {
 		return ColorEnabled
 	}
 
-	return ColorDisbled
+	return ColorDisabled
 }
 
 func (conf *Config) Target() string {
