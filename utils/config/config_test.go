@@ -194,6 +194,24 @@ var _ = Describe("Config", func() {
 			})
 		})
 
+		Describe("SkipSSLValidation", func() {
+			var config *Config
+
+			BeforeEach(func() {
+				rawConfig := `{ "SSLDisabled":true }`
+				setConfig(homeDir, rawConfig)
+
+				var err error
+				config, err = LoadConfig()
+				Expect(err).ToNot(HaveOccurred())
+				Expect(config).ToNot(BeNil())
+			})
+
+			It("returns fields directly from config", func() {
+				Expect(config.SkipSSLValidation()).To(BeTrue())
+			})
+		})
+
 		DescribeTable("Locale",
 			func(langVal string, lcAllVall string, configVal string, expected string) {
 				rawConfig := fmt.Sprintf(`{"Locale":"%s"}`, configVal)

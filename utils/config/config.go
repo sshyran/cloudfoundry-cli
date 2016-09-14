@@ -237,6 +237,10 @@ func (conf *Config) Target() string {
 	return conf.ConfigFile.Target
 }
 
+func (conf *Config) SkipSSLValidation() bool {
+	return conf.ConfigFile.SkipSSLValidation
+}
+
 func (conf *Config) APIVersion() string {
 	return conf.ConfigFile.APIVersion
 }

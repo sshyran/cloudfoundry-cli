@@ -75,6 +75,12 @@ type FakeConfig struct {
 	targetedSpaceReturns     struct {
 		result1 config.Space
 	}
+	SkipSSLValidationStub        func() bool
+	skipSSLValidationMutex       sync.RWMutex
+	skipSSLValidationArgsForCall []struct{}
+	skipSSLValidationReturns     struct {
+		result1 bool
+	}
 	invocations      map[string][][]interface{}
 	invocationsMutex sync.RWMutex
 }
@@ -335,6 +341,31 @@ func (fake *FakeConfig) TargetedSpaceReturns(result1 config.Space) {
 	}{result1}
 }
 
+func (fake *FakeConfig) SkipSSLValidation() bool {
+	fake.skipSSLValidationMutex.Lock()
+	fake.skipSSLValidationArgsForCall = append(fake.skipSSLValidationArgsForCall, struct{}{})
+	fake.recordInvocation("SkipSSLValidation", []interface{}{})
+	fake.skipSSLValidationMutex.Unlock()
+	if fake.SkipSSLValidationStub != nil {
+		return fake.SkipSSLValidationStub()
+	} else {
+		return fake.skipSSLValidationReturns.result1
+	}
+}
+
+func (fake *FakeConfig) SkipSSLValidationCallCount() int {
+	fake.skipSSLValidationMutex.RLock()
+	defer fake.skipSSLValidationMutex.RUnlock()
+	return len(fake.skipSSLValidationArgsForCall)
+}
+
+func (fake *FakeConfig) SkipSSLValidationReturns(result1 bool) {
+	fake.SkipSSLValidationStub = nil
+	fake.skipSSLValidationReturns = struct {
+		result1 bool
+	}{result1}
+}
+
 func (fake *FakeConfig) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
@@ -358,6 +389,8 @@ func (fake *FakeConfig) Invocations() map[string][][]interface{} {
 	defer fake.targetedOrganizationMutex.RUnlock()
 	fake.targetedSpaceMutex.RLock()
 	defer fake.targetedSpaceMutex.RUnlock()
+	fake.skipSSLValidationMutex.RLock()
+	defer fake.skipSSLValidationMutex.RUnlock()
 	return fake.invocations
 }
 
