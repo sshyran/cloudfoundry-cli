@@ -245,6 +245,14 @@ func (conf *Config) APIVersion() string {
 	return conf.ConfigFile.APIVersion
 }
 
+func (conf *Config) AccessToken() string {
+	return conf.ConfigFile.AccessToken
+}
+
+func (conf *Config) RefreshToken() string {
+	return conf.ConfigFile.RefreshToken
+}
+
 func (conf *Config) TargetedOrganization() Organization {
 	return conf.ConfigFile.TargetedOrganization
 }

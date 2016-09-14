@@ -363,6 +363,42 @@ var _ = Describe("Config", func() {
 				})
 			})
 		})
+
+		Describe("AccessToken", func() {
+			var config *Config
+
+			BeforeEach(func() {
+				rawConfig := `{ "AccessToken":"test-access-token" }`
+				setConfig(homeDir, rawConfig)
+
+				var err error
+				config, err = LoadConfig()
+				Expect(err).ToNot(HaveOccurred())
+				Expect(config).ToNot(BeNil())
+			})
+
+			It("returns fields directly from config", func() {
+				Expect(config.AccessToken()).To(Equal("test-access-token"))
+			})
+		})
+
+		Describe("RefreshToken", func() {
+			var config *Config
+
+			BeforeEach(func() {
+				rawConfig := `{ "RefreshToken":"test-refresh-token" }`
+				setConfig(homeDir, rawConfig)
+
+				var err error
+				config, err = LoadConfig()
+				Expect(err).ToNot(HaveOccurred())
+				Expect(config).ToNot(BeNil())
+			})
+
+			It("returns fields directly from config", func() {
+				Expect(config.RefreshToken()).To(Equal("test-refresh-token"))
+			})
+		})
 	})
 
 	Describe("Write Config", func() {

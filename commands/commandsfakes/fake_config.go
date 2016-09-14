@@ -81,6 +81,18 @@ type FakeConfig struct {
 	skipSSLValidationReturns     struct {
 		result1 bool
 	}
+	AccessTokenStub        func() string
+	accessTokenMutex       sync.RWMutex
+	accessTokenArgsForCall []struct{}
+	accessTokenReturns     struct {
+		result1 string
+	}
+	RefreshTokenStub        func() string
+	refreshTokenMutex       sync.RWMutex
+	refreshTokenArgsForCall []struct{}
+	refreshTokenReturns     struct {
+		result1 string
+	}
 	invocations      map[string][][]interface{}
 	invocationsMutex sync.RWMutex
 }
@@ -366,6 +378,56 @@ func (fake *FakeConfig) SkipSSLValidationReturns(result1 bool) {
 	}{result1}
 }
 
+func (fake *FakeConfig) AccessToken() string {
+	fake.accessTokenMutex.Lock()
+	fake.accessTokenArgsForCall = append(fake.accessTokenArgsForCall, struct{}{})
+	fake.recordInvocation("AccessToken", []interface{}{})
+	fake.accessTokenMutex.Unlock()
+	if fake.AccessTokenStub != nil {
+		return fake.AccessTokenStub()
+	} else {
+		return fake.accessTokenReturns.result1
+	}
+}
+
+func (fake *FakeConfig) AccessTokenCallCount() int {
+	fake.accessTokenMutex.RLock()
+	defer fake.accessTokenMutex.RUnlock()
+	return len(fake.accessTokenArgsForCall)
+}
+
+func (fake *FakeConfig) AccessTokenReturns(result1 string) {
+	fake.AccessTokenStub = nil
+	fake.accessTokenReturns = struct {
+		result1 string
+	}{result1}
+}
+
+func (fake *FakeConfig) RefreshToken() string {
+	fake.refreshTokenMutex.Lock()
+	fake.refreshTokenArgsForCall = append(fake.refreshTokenArgsForCall, struct{}{})
+	fake.recordInvocation("RefreshToken", []interface{}{})
+	fake.refreshTokenMutex.Unlock()
+	if fake.RefreshTokenStub != nil {
+		return fake.RefreshTokenStub()
+	} else {
+		return fake.refreshTokenReturns.result1
+	}
+}
+
+func (fake *FakeConfig) RefreshTokenCallCount() int {
+	fake.refreshTokenMutex.RLock()
+	defer fake.refreshTokenMutex.RUnlock()
+	return len(fake.refreshTokenArgsForCall)
+}
+
+func (fake *FakeConfig) RefreshTokenReturns(result1 string) {
+	fake.RefreshTokenStub = nil
+	fake.refreshTokenReturns = struct {
+		result1 string
+	}{result1}
+}
+
 func (fake *FakeConfig) Invocations() map[string][][]interface{} {
 	fake.invocationsMutex.RLock()
 	defer fake.invocationsMutex.RUnlock()
@@ -391,6 +453,10 @@ func (fake *FakeConfig) Invocations() map[string][][]interface{} {
 	defer fake.targetedSpaceMutex.RUnlock()
 	fake.skipSSLValidationMutex.RLock()
 	defer fake.skipSSLValidationMutex.RUnlock()
+	fake.accessTokenMutex.RLock()
+	defer fake.accessTokenMutex.RUnlock()
+	fake.refreshTokenMutex.RLock()
+	defer fake.refreshTokenMutex.RUnlock()
 	return fake.invocations
 }
 

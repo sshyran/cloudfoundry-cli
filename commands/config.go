@@ -17,4 +17,6 @@ type Config interface {
 	TargetedOrganization() config.Organization
 	TargetedSpace() config.Space
 	SkipSSLValidation() bool
+	AccessToken() string
+	RefreshToken() string
 }
