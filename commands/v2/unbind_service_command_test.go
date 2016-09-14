@@ -12,7 +12,7 @@ import (
 	. "github.com/onsi/gomega/gbytes"
 )
 
-var _ = Describe("Unbind Service Command", func() {
+var _ = XDescribe("Unbind Service Command", func() {
 	var (
 		cmd        UnbindServiceCommand
 		fakeUI     ui.UI
@@ -58,7 +58,7 @@ var _ = Describe("Unbind Service Command", func() {
 		})
 
 		Context("when no binding exists between the app and the service", func() {
-			FIt("states the binding does not exist", func() {
+			It("states the binding does not exist", func() {
 				Expect(err).ToNot(HaveOccurred())
 
 				Expect(fakeUI.Out).To(Say("Unbinding app %s from service %s in org %s / space %s as %s",

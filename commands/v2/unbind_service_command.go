@@ -27,9 +27,5 @@ func (cmd UnbindServiceCommand) Setup(config commands.Config, ui commands.UI) er
 }
 
 func (_ UnbindServiceCommand) Execute(args []string) error {
-	var err error
-	if requiredArgs.AppName != nil && requiredArgs.ServiceInstance != nil {
-
-	}
-
+	return nil
 }
