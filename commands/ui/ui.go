@@ -42,7 +42,7 @@ type Config interface {
 // translation function on the error
 type TranslatableError interface {
 	Error() string
-	SetTranslation(i18n.TranslateFunc) error
+	Translate(func(string, ...interface{}) string) string
 }
 
 // UI is interface to interact with the user
@@ -168,9 +168,8 @@ func (ui UI) DisplayErrorMessage(err string, keys ...map[string]interface{}) {
 
 // DisplayError outputs the error to UI.Err and outputs a red translated
 // "FAILED" to UI.Out.
-func (ui UI) DisplayError(originalErr TranslatableError) {
-	err := originalErr.SetTranslation(ui.translate)
-	fmt.Fprintf(ui.Err, "%s\n", err.Error())
+func (ui UI) DisplayError(err TranslatableError) {
+	fmt.Fprintf(ui.Err, "%s\n", err.Translate(ui.translate))
 
 	translatedFormatString := ui.translate("FAILED", nil)
 	fmt.Fprintf(ui.Out, "%s\n", ui.colorize(translatedFormatString, red, true))
